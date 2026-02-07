@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Aegis - Smart Redaction Engine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo img {
+            width: 50px;
+            height: 44px;
+        }
+        
+        .logo span {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 2.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        
+        .main-content {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .upload-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .upload-header {
+            text-align: center;
+        }
+        
+        .upload-header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        
+        .upload-zone {
+            width: 100%;
+        }
+        
+        .upload-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .upload-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+        
+        .upload-help {
+            font-size: 1rem;
+        }
+        
+        .file-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .action-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
+        
+        .file-count {
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        
+        .browse-btn {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+        }
+        
+        .footer {
+            text-align: center;
+            width: 100%;
+            margin-top: 3rem;
+        }
+        
+        .footer p {
+            font-size: 1rem;
+        }
+        
+        .footer-note {
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <img src="logo2.png" width="50" height="44" />
+                <span>Themis</span>
+            </div>
+            <nav class="nav">
+                <a href="#" class="nav-link active">Upload</a>
+                <a href="#" class="nav-link">History</a>
+                <a href="#" class="nav-link">Settings</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-section">
+                <div class="upload-header">
+                    <h1>Smart Document Redaction</h1>
+                    <p class="subtitle">AI-powered contextual redaction for legal documents</p>
+                </div>
+
+                <div class="upload-zone" id="uploadZone">
+                    <input type="file" id="fileInput" multiple accept=".pdf,.doc,.docx" hidden>
+                    <div class="upload-content">
+                        <div class="upload-icon">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M32 10V42M32 42L44 30M32 42L20 30" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10 42V50C10 52.2091 11.7909 54 14 54H50C52.2091 54 54 52.2091 54 50V42" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h2 class="upload-title">Upload your files here or <button class="browse-btn" id="browseBtn">Browse</button></h2>
+                        <p class="upload-help">Supports PDF, DOC, DOCX (Max 50MB per file)</p>
+                    </div>
+                </div>
+
+                <div class="file-list" id="fileList"></div>
+
+                <div class="action-bar" id="actionBar" style="display: none;">
+                    <div class="file-count">
+                        <span id="fileCount">0</span> file(s) selected
+                    </div>
+                    <button class="btn btn-primary" id="processBtn">
+                        <span>Begin Redaction</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Powered by Google Gemini, MongoDB Atlas, and Snowflake</p>
+            <p class="footer-note">Trauma-informed data privacy for legal professionals</p>
+        </footer>
+    </div>
+
+    <script src="upload.js"></script>
+</body>
+</html>
