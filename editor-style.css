@@ -5,6 +5,8 @@ body {
                  Roboto, Helvetica, Arial, sans-serif;
     background: #f5f7fb;
     color: #1f2937;
+    padding-top: 50px;
+    position: relative;
 }
 
 /* ---------- Layout ---------- */
@@ -125,3 +127,46 @@ main {
     gap: 0.5rem;
     justify-content: flex-end;
 }
+
+.back-btn {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.9rem;
+  padding: 6px 14px;
+
+  background: none;
+  border: 1px solid #333;
+  border-radius: 4px;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #f5f5f5;
+}
+
+.approve-btn {
+  margin-top: 8px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.9rem;
+  padding: 6px 14px;
+
+  background: none;
+  border: 1px solid #333;
+  border-radius: 4px;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.approve-btn:hover {
+  background: #f5f5f5;
+}
+
+
+

@@ -11,6 +11,16 @@ let currentId = null;
 document.addEventListener('DOMContentLoaded', () => {
     bindHighlights();
     updateSidebar();
+
+    const backBtn = document.getElementById('backBtn');
+    if (backBtn) {
+      backBtn.addEventListener('click', () => {
+        // Option A: go back in history (best if you came from index)
+        if (window.history.length > 1) window.history.back();
+        else window.location.href = 'index.html'; // fallback
+      });
+    }
+
 });
 
 function bindHighlights() {
