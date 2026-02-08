@@ -1,0 +1,35 @@
+{
+  "name": "themis",
+  "version": "1.0.0",
+  "description": "## 🎯 Project Overview Inspired by the Greek goddess of justice, protection, and enforcement, our project is an AI-driven Smart Redaction Engine built specifically for high-stakes legal and investigative documents involving survivors of sexual assault. Unlike standard tools, Themis doesn’t just look for names; it understands context.",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node backend/server.js",
+    "client": "npx serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HC4444/Themis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/HC4444/Themis/issues"
+  },
+  "homepage": "https://github.com/HC4444/Themis#readme",
+  "dependencies": {
+    "@google/genai": "^1.40.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "mongodb": "^7.1.0",
+    "multer": "^2.0.2",
+    "snowflake-sdk": "^2.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
