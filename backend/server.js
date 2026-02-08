@@ -15,6 +15,60 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "20mb" }));
 
+/** -- Knowledge Tree Model -- **/
+const EntitySchema = new Schema({
+  // Using a String for _id allows for "Normalized Names" (e.g., "John Doe")
+  _id: { type: String, required: true },
+  type: {
+    type: String,
+    enum: ['Person', 'Organization', 'Location', 'Case', 'Date', 'Financial'],
+    required: true
+  },
+  attributes: {
+    role: String,           // e.g., "Plaintiff", "Witness"
+    confidence: Number,     // How sure the LLM is about this entity
+    isPII: { type: Boolean, default: false }
+  },
+  relationships: {
+    // This is the core of your graph
+    outbound: [{
+      target_id: { type: String, ref: 'Entity' }, // Connects to another _id
+      predicate: String,                          // e.g., "SPOUSE_OF", "WORKS_FOR"
+      source_doc: String                          // Tracking where we found this link
+    }]
+  },
+  redaction: {
+    status: { type: String, enum: ['Visible', 'Redacted', 'Flagged'], default: 'Visible' },
+    replacement: String    // e.g., "[PLAINTIFF_A]"
+  }
+}, { timestamps: true });
+
+// CRITICAL: Index the target_id for the $graphLookup operator to work fast
+EntitySchema.index({ "relationships.outbound.target_id": 1 });
+
+const Entity = mongoose.model('Entity', EntitySchema);
+module.exports = Entity;
+
+async function getCaseNetwork(caseId) {
+  return await Entity.aggregate([
+    { $match: { _id: caseId } }, // Start at the Case node
+    {
+      $graphLookup: {
+        from: 'entities',               // The collection name
+        startWith: '$relationships.outbound.target_id',
+        connectFromField: 'relationships.outbound.target_id',
+        connectToField: '_id',
+        as: 'connectedEntities',
+        maxDepth: 2                     // Find "friends of friends"
+      }
+    }
+  ]);
+}
+
+function create_node() {
+
+}
+
 /** ---------- MONGOOSE TEST MODEL (from Luke's) ---------- **/
 const userSchema = new mongoose.Schema({
   name: String,
