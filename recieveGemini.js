@@ -55,6 +55,6 @@ getRedacted('ex.txt');
 function redactPDF(pdfPath) {
     textPath = 'submitted'
     convertPdfToText(pdfPath, textPath );
-    getRedacted(textPath);
+    return getRedacted(textPath);
 }
 
