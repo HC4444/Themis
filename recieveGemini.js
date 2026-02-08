@@ -52,9 +52,9 @@ async function convertPdfToText(inputPath, outputPath) {
 // convertPdfToText('./legal_transcript.pdf', './extracted_text.txt');
 getRedacted('ex.txt');
 
-function redactPDF(pdfPath) {
+async function redactPDF(pdfPath) {
     textPath = 'submitted'
-    convertPdfToText(pdfPath, textPath );
-    return getRedacted(textPath);
+    await convertPdfToText(pdfPath, textPath );
+    return await getRedacted(textPath);
 }
 
