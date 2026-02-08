@@ -1,0 +1,127 @@
+/* ---------- Base / Font ---------- */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
+                 Roboto, Helvetica, Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+/* ---------- Layout ---------- */
+header {
+    padding: 1rem 1.5rem;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Simulated PDF page */
+.document-page {
+    background: #ffffff;
+    width: 820px;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+
+/* ---------- Sidebar ---------- */
+#redactionPanel {
+    width: 260px;
+    padding: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.redaction-item {
+    cursor: pointer;
+    padding: 0.25rem 0;
+}
+
+.redaction-item.accepted {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+
+/* ---------- Document ---------- */
+.declaration-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.declaration-header h1 {
+    letter-spacing: 0.08em;
+    font-weight: 600;
+}
+
+.case-meta {
+    color: #6b7280;
+    margin-top: 0.5rem;
+}
+
+/* ---------- Redaction Highlights ---------- */
+.redaction-highlight {
+    border-bottom: 2px dotted #6366f1;
+    cursor: pointer;
+}
+
+.redaction-highlight.pending:hover {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+/* ---------- Modal ---------- */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 1.75rem;
+    border-radius: 14px;
+    width: 480px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+    margin: 0;
+}
+
+.modal-close {
+    cursor: pointer;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 0.15rem 0.4rem;
+}
+
+.modal-section {
+    margin-bottom: 1rem;
+}
+
+.modal-section strong {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
