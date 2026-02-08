@@ -27,6 +27,29 @@
 .browse-btn:hover {
   background: #f5f5f5;
 }
+
+.next-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.9rem;
+  padding: 6px 14px;
+
+  background: none;
+  border: 1px solid #333;
+  border-radius: 4px;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.next-btn:hover {
+  background: #f5f5f5;
+}
+
+
     /* =====================
        Global
     ===================== */
@@ -39,6 +62,7 @@
       justify-content: center;
       margin: 0;
       padding: 20px;
+      position: relative;
     }
 
     /* =====================
@@ -293,14 +317,14 @@
         Trauma-informed data privacy for legal professionals
       </p>
     </footer>
+
+    <button class="next-btn" id="nextBtn">Next →</button>
   </div>
 
-  <script src="upload.js"></script>
-</body>
 
-<button class="next-btn" id="nextBtn">
-  Next →
-</button>
+  <script src="upload.js"></script>
+
+</body>
 
 </html>
 
