@@ -6,7 +6,7 @@ from google import genai
 from google.genai import types
 
 # AVOID HARDCODING IN PRODUCTION
-gem_key = "AIzaSyAdMIvGNU2nurZGuEuidqeoWYf0HC1Hp64"
+gem_key = "apikey"
 
 client = genai.Client(api_key=gem_key)
 
