@@ -7,7 +7,7 @@ const app = express();
 const upload = multer({ dest: 'uploads/' }); // Temporary storage for uploaded files
 
 // 1. Setup API Client
-const GEMINI_API_KEY = "AIzaSyAdMIvGNU2nurZGuEuidqeoWYf0HC1Hp64";
+const GEMINI_API_KEY = "apikey";
 const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
 const systemInstruction = `
