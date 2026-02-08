@@ -11,6 +11,14 @@ let currentId = null;
 document.addEventListener('DOMContentLoaded', () => {
     bindHighlights();
     updateSidebar();
+    
+    // Back button handler - MOVED HERE
+    const backBtn = document.getElementById('backBtn');
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    }
 });
 
 function bindHighlights() {

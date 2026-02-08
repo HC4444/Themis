@@ -125,3 +125,9 @@ main {
     gap: 0.5rem;
     justify-content: flex-end;
 }
+
+
+.back-link {
+    cursor: pointer;
+    display: inline-block;
+}
