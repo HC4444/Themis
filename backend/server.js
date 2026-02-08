@@ -141,7 +141,7 @@ app.post("/mongo-test", async (req, res) => {
     // If you really want their test to run on startup, uncomment:
     // await runTestQuery();
 
-    const PORT = process.env.PORT || 8080;
+    const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => console.log(`API listening on ${PORT}`));
   } catch (e) {
     console.error("Startup failed:", e);
