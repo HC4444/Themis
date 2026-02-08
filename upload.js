@@ -6,17 +6,31 @@ const fileList = document.getElementById('fileList');
 const actionBar = document.getElementById('actionBar');
 const fileCount = document.getElementById('fileCount');
 const processBtn = document.getElementById('processBtn');
+const nextBtn = document.getElementById('nextBtn');
 
 let selectedFiles = [];
 
-// Browse button click
+// Browse button click - SIMPLE VERSION
 browseBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    e.stopPropagation();
     fileInput.click();
 });
 
-// Upload zone click
-uploadZone.addEventListener('click', () => {
+// Next button click
+nextBtn.addEventListener('click', () => {
+    //if (selectedFiles.length === 0) {
+    //    alert('Please select at least one file');
+     //   return;
+   // }
+    window.location.href = 'editor.html';
+});
+
+// Upload zone click - ignore if clicking browse button
+uploadZone.addEventListener('click', (e) => {
+    if (e.target.id === 'browseBtn' || e.target.closest('#browseBtn')) {
+        return;
+    }
     fileInput.click();
 });
 

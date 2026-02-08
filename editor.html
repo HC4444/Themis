@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document Review</title>
+    <link rel="stylesheet" href="editor-style.css" />
+</head>
+<body>
+
+<header>
+    ← Back<br />
+    <strong>Document_2024.pdf</strong><br />
+    Review in progress<br />
+    <button id="approveAllBtn">Approve All</button>
+</header>
+
+<div style="display:flex;">
+    <!-- Sidebar -->
+    <aside id="redactionPanel">
+        <h3>Suggested Redactions</h3>
+        <div id="redactionCount"></div>
+        <div id="redactionList"></div>
+        <hr />
+        <strong>Implemented redactions</strong>
+        <div id="implementedList"></div>
+    </aside>
+
+    <!-- Main Document -->
+    <main>
+        <div class="document-page">
+
+            <div class="declaration-header">
+                <h1>DECLARATION OF WITNESS</h1>
+                <div class="case-meta">
+                    Case No. 2024-CV-12345 | Filed: January 15, 2024
+                </div>
+            </div>
+
+            <p>
+                I,
+                <span class="redaction-highlight pending" data-redaction="0">Jane Doe</span>,
+                residing at
+                <span class="redaction-highlight pending" data-redaction="1">
+                    123 Maple Street, Springfield, IL 62701
+                </span>,
+                being duly sworn, depose and state as follows:
+            </p>
+
+            <p>
+                <strong>Background:</strong>
+                I am currently employed as
+                <span class="redaction-highlight pending" data-redaction="2">
+                    the only female neurosurgeon at Springfield Medical Center
+                </span>.
+            </p>
+
+            <p>
+                On March 15, 2023, I was at
+                <span class="redaction-highlight pending" data-redaction="3">
+                    the hospital cafeteria on the 5th floor
+                </span>.
+            </p>
+
+            <p>
+                My colleague
+                <span class="redaction-highlight pending" data-redaction="6">
+                    Dr. Michael Chen
+                </span>
+                was present.
+            </p>
+
+            <p style="margin-top:3rem;">
+                ___________________________<br />
+                Jane Doe
+            </p>
+
+        </div>
+    </main>
+</div>
+
+<!-- Modal -->
+<div id="redactionModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Review Suggestion</h3>
+            <span id="modalClose" class="modal-close">✕</span>
+        </div>
+
+        <div class="modal-section">
+            <strong>Original</strong>
+            <div id="modalOriginalText"></div>
+        </div>
+
+        <div class="modal-section">
+            <strong>Suggested</strong>
+            <div id="modalSuggestedText"></div>
+        </div>
+
+        <div class="modal-actions">
+            <button id="rejectBtn">Reject</button>
+            <button id="acceptBtn">Accept</button>
+        </div>
+    </div>
+</div>
+
+<script src="editor.js"></script>
+</body>
+</html>
